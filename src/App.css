@@ -5,12 +5,6 @@
   /* text-align: center;  ← removed so children use their own text alignment */
 }
 
-@media (max-width: 640px) {
-  #root {
-    margin-left: 0.5rem;  /* 8px */
-    padding-right: 0.5rem; /* 8px */
-  }
-}
 
 .logo {
   height: 6em;

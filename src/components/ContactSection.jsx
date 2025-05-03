@@ -110,7 +110,7 @@ function ContactSection() {
 
           {/* Social Icons */}
           <motion.div
-            className="my-2 flex flex-wrap items-center gap-3"
+            className="my-2 flex flex-wrap items-center gap-2"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
