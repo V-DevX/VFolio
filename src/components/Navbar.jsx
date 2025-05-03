@@ -61,7 +61,7 @@ export default function Navbar() {
               <img
                 src={personalData.cover}
                 alt={personalData.name}
-                className="w-35 md:w-40 rounded-lg transition-all duration-1000 grayscale hover:grayscale-0 hover:scale-110 cursor-pointer"
+                className="w-35 md:w-40 rounded-lg transition-all duration-1000 grayscale hover:grayscale-0 active:grayscale-o hover:scale-110 active:scale-110 cursor-pointer"
               />
             </a>
           </motion.div>
