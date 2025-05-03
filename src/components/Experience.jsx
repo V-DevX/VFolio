@@ -12,7 +12,7 @@ function Experience() {
   return (
     <div
       id="experience"
-      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]"
+      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b] px-4 md:px-8"
     >
       {/* Background SVG */}
       <img
@@ -40,30 +40,30 @@ function Experience() {
 
       {/* Content */}
       <div className="py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
           {/* Lottie animation */}
           <motion.div
-            className="flex justify-center items-start"
+            className="flex justify-center items-center w-full"
             variants={slideUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
           >
-            <div className="w-full h-full">
+            <div className="w-full max-w-md">
               <AnimationLottie animationData={codeAnimation} />
             </div>
           </motion.div>
 
           {/* Experience cards */}
           <motion.div
-            className="flex flex-col gap-6"
+            className="flex flex-col items-center lg:items-start gap-6 w-full"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
             {experiences.map((exp) => (
-              <motion.div key={exp.id} variants={slideRight}>
+              <motion.div key={exp.id} variants={slideRight} className="w-full">
                 <GlowCard>
                   <div className="p-3 relative text-white">
                     {/* Blur background */}
@@ -81,11 +81,18 @@ function Experience() {
                     </div>
 
                     {/* Icon, Title & Company */}
-                    <div className="flex items-center gap-x-8 px-3 py-5">
-                      <div className="text-violet-500 transition-all duration-300 hover:scale-125">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-x-8 px-3 py-5">
+                      <div
+                        tabIndex={0}
+                        className="
+                          text-violet-500 transition-all duration-300
+                          hover:scale-125 active:scale-125 focus:scale-125
+                          cursor-pointer focus:outline-none focus:ring-2 focus:ring-violet-500
+                        "
+                      >
                         <BsPersonWorkspace size={36} />
                       </div>
-                      <div>
+                      <div className="text-center sm:text-left">
                         <p className="text-base sm:text-xl mb-2 font-medium uppercase">
                           {exp.title}
                         </p>

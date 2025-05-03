@@ -12,7 +12,8 @@ import { FaTwitterSquare } from "react-icons/fa";
 import ContactForm from "./ContactForm";
 
 function ContactSection() {
-  const iconHoverStyles = "relative group w-20 h-20 flex items-center justify-center";
+  const iconHoverStyles =
+    "relative group w-20 h-20 flex items-center justify-center touch-manipulation";
 
   const infoCards = [
     {
@@ -60,7 +61,7 @@ function ContactSection() {
   ];
 
   return (
-    <div id="contact" className="my-12 lg:my-16 relative mt-24 text-white">
+    <div id="contact" className="my-12 lg:my-16 relative mt-24 text-white px-4">
       {/* Vertical label on large screens */}
       <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8">
         <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md font-semibold">
@@ -76,11 +77,15 @@ function ContactSection() {
         {/* Right: Info & Socials */}
         <div className="lg:w-3/4 flex flex-col gap-10">
           {/* Info cards */}
-          <div className="flex flex-col mt-15 gap-6">
+          <div className="pt-12 flex flex-col gap-6">
             {infoCards.map(({ icon, value, href }, i) => {
               const card = (
                 <div className="flex items-center bg-white/10 border border-white/10 backdrop-blur-md p-4 rounded-xl shadow-md">
-                  <div className="text-gray-800 bg-[#8b98a5] hover:bg-[#16f2b3] p-2 rounded-full transition-all duration-300 hover:scale-110">
+                  <div
+                    className="text-gray-800 bg-[#8b98a5] hover:bg-[#16f2b3] p-2 rounded-full transition-all duration-300 hover:scale-110 active:scale-105"
+                    onTouchStart={(e) => e.currentTarget.classList.add("scale-105")}
+                    onTouchEnd={(e) => e.currentTarget.classList.remove("scale-105")}
+                  >
                     {icon}
                   </div>
                   <div className="mx-4 h-10 w-[2px] bg-white/30" />
@@ -105,7 +110,7 @@ function ContactSection() {
 
           {/* Social Icons */}
           <motion.div
-            className="my-4 flex items-center gap-5"
+            className="my-2 flex flex-wrap items-center gap-3"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -118,10 +123,18 @@ function ContactSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full h-full flex items-center justify-center group relative"
+                  onTouchStart={(e) => {
+                    const bgEl = e.currentTarget.querySelector(".hover-bg");
+                    if (bgEl) bgEl.classList.add("scale-100");
+                  }}
+                  onTouchEnd={(e) => {
+                    const bgEl = e.currentTarget.querySelector(".hover-bg");
+                    if (bgEl) bgEl.classList.remove("scale-100");
+                  }}
                 >
                   {/* Glass background */}
                   <motion.div
-                    className={`absolute inset-0 ${bg} rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 z-0 shadow-lg`}
+                    className={`absolute inset-0 ${bg} rounded-xl scale-0 group-hover:scale-100 hover-bg transition-transform duration-300 z-0 shadow-lg`}
                   />
                   {/* Icon + Label */}
                   <motion.div whileTap={{ scale: 0.9 }} className="relative z-10 flex flex-col items-center gap-1">

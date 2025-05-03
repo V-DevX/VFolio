@@ -7,7 +7,10 @@ import { skillsImage } from "../utils/skill-image";
 
 function Skills() {
   return (
-    <div id="skills" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+    <div
+      id="skills"
+      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b] px-4 md:px-8"
+    >
       {/* blurred circle */}
       <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl opacity-20" />
 
@@ -43,13 +46,29 @@ function Skills() {
           {skillsData.map((skill, idx) => (
             <motion.div
               key={idx}
-              className="w-36 min-w-fit h-fit flex flex-col items-center justify-center m-3 sm:m-5 rounded-lg group relative transition-all duration-500 hover:scale-[1.15] cursor-pointer"
               variants={fadeInStagger}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 1 }}
+              tabIndex={0}
+              className="
+                w-36 min-w-fit h-fit flex flex-col items-center justify-center
+                m-3 sm:m-5 rounded-lg group relative
+                transition-all duration-500
+                hover:scale-[1.15] active:scale-[1.15] focus:scale-[1.15]
+                cursor-pointer
+              "
             >
-              <div className="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] group-hover:border-violet-500 transition-all duration-500">
+              <div
+                className="
+                  h-full w-full rounded-lg border bg-[#11152c]
+                  border-[#1f223c]
+                  transition-all duration-500
+                  group-hover:border-violet-500
+                  group-active:border-violet-500
+                  focus:border-violet-500
+                "
+              >
                 <div className="flex -translate-y-[1px] justify-center">
                   <div className="w-3/4">
                     <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent" />

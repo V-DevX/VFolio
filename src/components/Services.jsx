@@ -12,7 +12,7 @@ function Services() {
   return (
     <div
       id="services"
-      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]"
+      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b] px-4 md:px-8"
     >
       {/* Section background */}
       <img
@@ -40,10 +40,10 @@ function Services() {
 
       {/* Content */}
       <div className="py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
           {/* Left: Lottie Animation */}
           <motion.div
-            className="flex justify-center items-start"
+            className="flex justify-center items-center w-full"
             variants={slideLeft}
             initial="hidden"
             whileInView="visible"
@@ -54,14 +54,14 @@ function Services() {
 
           {/* Right: Service Cards */}
           <motion.div
-            className="flex flex-col gap-6"
+            className="flex flex-col items-center lg:items-start gap-6 w-full"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.6 }}
           >
             {services.map((svc) => (
-              <motion.div key={svc.id} variants={slideLeft}>
+              <motion.div key={svc.id} variants={slideLeft} className="w-full">
                 <GlowCard>
                   <div className="p-3 relative text-white">
                     {/* Blur background */}
@@ -72,11 +72,18 @@ function Services() {
                     />
 
                     {/* Icon + Text */}
-                    <div className="flex items-center gap-x-8 px-3 py-5">
-                      <div className="text-violet-500 transition-all duration-300 hover:scale-125">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-8 px-3 py-5">
+                      <div
+                        tabIndex={0}
+                        className="
+                          text-violet-500 transition-all duration-300
+                          hover:scale-125 active:scale-125 focus:scale-125
+                          cursor-pointer
+                        "
+                      >
                         <BsPersonWorkspace size={36} />
                       </div>
-                      <div>
+                      <div className="text-center sm:text-left">
                         <p className="text-base sm:text-xl mb-2 font-medium uppercase">
                           {svc.title}
                         </p>

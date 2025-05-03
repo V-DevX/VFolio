@@ -5,7 +5,7 @@ import { personalData } from "../utils/data/personal-data";
 
 function AboutSection() {
   return (
-    <div id="about" className="my-12 lg:my-16 relative">
+    <div id="about" className="my-12 lg:my-16 relative px-4 md:px-8">
       {/* “ABOUT ME” label for large screens */}
       <motion.div
         className="hidden lg:flex flex-col items-center absolute top-16 -right-8"
@@ -20,11 +20,11 @@ function AboutSection() {
         <span className="h-36 w-[2px] bg-[#1a1443]" />
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
         {/* Text Section */}
-        <div className="order-2 lg:order-1">
+        <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
           <motion.p
-            className="font-mono mb-5 text-[#16f2b3] text-xl lg:text-4xl uppercase font-bold"
+            className="font-mono mb-5 text-[#16f2b3] text-xl lg:text-4xl uppercase font-bold text-center lg:text-left"
             variants={slideUp}
             initial="hidden"
             whileInView="visible"
@@ -34,7 +34,7 @@ function AboutSection() {
           </motion.p>
 
           <motion.p
-            className="text-gray-200 text-sm lg:text-lg leading-7 lg:leading-8"
+            className="text-gray-200 text-sm lg:text-lg leading-7 lg:leading-8 text-center lg:text-left"
             variants={slideUp}
             initial="hidden"
             whileInView="visible"
@@ -46,7 +46,7 @@ function AboutSection() {
 
         {/* Profile Image */}
         <motion.div
-          className="flex justify-center order-1 lg:order-2"
+          className="order-1 lg:order-2 flex justify-center"
           variants={slideLeft}
           initial="hidden"
           whileInView="visible"
@@ -57,7 +57,12 @@ function AboutSection() {
             alt={personalData.name}
             width={280}
             height={280}
-            className="rounded-lg transition-all duration-1000 grayscale hover:grayscale-0 hover:scale-110 cursor-pointer"
+            className={
+              "rounded-lg transition-all duration-1000 grayscale " +
+              "hover:grayscale-0 active:grayscale-0 focus:grayscale-0 " +
+              "hover:scale-110 active:scale-110 focus:scale-110 " +
+              "cursor-pointer"
+            }
           />
         </motion.div>
       </div>

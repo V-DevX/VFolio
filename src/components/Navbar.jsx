@@ -31,19 +31,37 @@ export default function Navbar() {
 
   // Smooth scroll logic with fallback
   const scrollToSection = (id) => {
-    setMenuOpen(false); // Close menu immediately
+    setMenuOpen(false);
     setTimeout(() => {
       const section = document.getElementById(id);
       if (section) {
         const yOffset = window.innerWidth < 768 ? -130 : 0;
         const y =
-        section.getBoundingClientRect().top + window.scrollY + yOffset;
-
+          section.getBoundingClientRect().top + window.scrollY + yOffset;
         window.scrollTo({ top: y, behavior: "smooth" });
         setMenuOpen(false);
       }
-    }, 100); // Wait for menu to close before scrolling
+    }, 100);
   };
+
+  // Shared button classes for hover/active/focus
+  const linkBtnClasses =
+    "block px-4 py-2 rounded-full bg-gradient-to-r transition-all duration-300 text-sm text-white font-bold " +
+    "hover:from-pink-500 hover:to-violet-600 hover:text-white hover:scale-105 " +
+    "active:from-pink-500 active:to-violet-600 active:text-white active:scale-105 " +
+    "focus:from-pink-500 focus:to-violet-600 focus:text-white focus:scale-105";
+
+  const mobileLinkBtnClasses =
+    "block w-full text-center rounded-full bg-gradient-to-r text-white text-sm px-4 py-2 transition-all duration-300 " +
+    "hover:from-pink-500 hover:to-violet-600 hover:scale-105 " +
+    "active:from-pink-500 active:to-violet-600 active:scale-105 " +
+    "focus:from-pink-500 focus:to-violet-600 focus:scale-105";
+
+  const hamburgerBtnClasses =
+    "text-white p-2 rounded-md transition-all " +
+    "hover:scale-110 hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-600 " +
+    "active:scale-110 active:bg-gradient-to-r active:from-pink-500 active:to-violet-600 " +
+    "focus:scale-110 focus:bg-gradient-to-r focus:from-pink-500 focus:to-violet-600";
 
   return (
     <>
@@ -61,7 +79,11 @@ export default function Navbar() {
               <img
                 src={personalData.cover}
                 alt={personalData.name}
-                className="w-35 md:w-40 rounded-lg transition-all duration-1000 grayscale hover:grayscale-0 active:grayscale-o hover:scale-110 active:scale-110 cursor-pointer"
+                className={
+                  "w-35 md:w-40 rounded-lg transition-all duration-1000 grayscale " +
+                  "hover:grayscale-0 active:grayscale-0 focus:grayscale-0 " +
+                  "hover:scale-110 active:scale-110 focus:scale-110 cursor-pointer"
+                }
               />
             </a>
           </motion.div>
@@ -75,10 +97,7 @@ export default function Navbar() {
           >
             {menuItems.map(([label, id], i) => (
               <motion.li key={id} variants={navItemFade} custom={i}>
-                <button
-                  onClick={() => scrollToSection(id)}
-                  className="block px-4 py-2 rounded-full bg-gradient-to-r hover:from-pink-500 hover:to-violet-600 hover:text-white transition-all duration-300 hover:scale-105 text-sm text-white font-bold"
-                >
+                <button onClick={() => scrollToSection(id)} className={linkBtnClasses}>
                   {label}
                 </button>
               </motion.li>
@@ -89,7 +108,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="text-white p-2 rounded-md transition-all hover:scale-110 hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-600"
+              className={hamburgerBtnClasses}
               aria-label="Toggle Menu"
             >
               {menuOpen ? (
@@ -115,7 +134,7 @@ export default function Navbar() {
                 <motion.li key={id} variants={navItemFade} custom={i}>
                   <button
                     onClick={() => scrollToSection(id)}
-                    className="block w-full text-left rounded-full bg-gradient-to-r hover:from-pink-500 hover:to-violet-600 text-white text-sm px-4 py-2 transition-all duration-300 hover:scale-105"
+                    className={mobileLinkBtnClasses}
                   >
                     {label}
                   </button>
@@ -138,7 +157,7 @@ export default function Navbar() {
           >
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="text-white p-2 rounded-md transition-all hover:scale-110 hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-600"
+              className={hamburgerBtnClasses}
               aria-label="Toggle Menu"
             >
               {menuOpen ? (
@@ -162,7 +181,7 @@ export default function Navbar() {
                     <motion.li key={id} variants={navItemFade} custom={i}>
                       <button
                         onClick={() => scrollToSection(id)}
-                        className="block w-full text-left rounded-full bg-gradient-to-r hover:from-pink-500 hover:to-violet-600 text-white text-sm px-4 py-2 transition-all duration-300 hover:scale-105"
+                        className={mobileLinkBtnClasses}
                       >
                         {label}
                       </button>
