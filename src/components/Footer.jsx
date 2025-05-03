@@ -3,7 +3,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="relative border-t bg-[#0d1224] border-[#353951] text-white px-4 md:px-8">
+    <footer className="relative border-t bg-[#0d1224] border-[#353951] text-white px-1 sm:px-4 md:px-8">
       <div className="relative mx-auto max-w-2xl py-6 lg:py-10">
         {/* Centered divider line */}
         <div className="flex justify-center">

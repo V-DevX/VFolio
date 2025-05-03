@@ -5,7 +5,7 @@ import { personalData } from "../utils/data/personal-data";
 
 function AboutSection() {
   return (
-    <div id="about" className="my-12 lg:my-16 relative px-4 md:px-8">
+    <div id="about" className="my-12 lg:my-16 relative px-1 sm:px-4 md:px-8">
       {/* “ABOUT ME” label for large screens */}
       <motion.div
         className="hidden lg:flex flex-col items-center absolute top-16 -right-8"

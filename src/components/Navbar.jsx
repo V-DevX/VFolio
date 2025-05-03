@@ -67,7 +67,7 @@ export default function Navbar() {
     <>
       {/* Main Navbar */}
       <nav ref={navRef} className="bg-transparent w-full z-40 relative">
-        <div className="flex items-center justify-between py-4 px-4 md:px-8">
+        <div className="flex items-center justify-between py-4 px-1 sm:px-4 md:px-8">
           {/* Logo */}
           <motion.div
             className="flex items-center"
