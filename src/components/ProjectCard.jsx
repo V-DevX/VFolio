@@ -23,7 +23,7 @@ function ProjectCard({ project }) {
         </div>
 
         {/* Project Name */}
-        <h3 className="text-[#16f2b3] text-[0.60rem] sm:text-[0.60rem] md:text-base lg:text-xl font-semibold uppercase sm:text-center mx-auto">
+        <h3 className="text-[#16f2b3] text-[0.60rem] sm:text-[0.60rem] md:text-base lg:text-xl font-bold uppercase sm:text-center mx-auto">
           {name}
         </h3>
 
@@ -34,7 +34,7 @@ function ProjectCard({ project }) {
             href={demo || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3 py-1 text-[0.60rem] sm:text-[0.60rem] md:text-[0.70rem] font-medium uppercase tracking-wide bg-white/10 backdrop-blur-md border border-white/20 rounded-l-full rounded-r-none transition-transform duration-200 ease-out hover:scale-105 active:scale-95"
+            className="px-3 py-1 text-[0.50rem] sm:text-[0.60rem] md:text-[0.70rem] font-medium uppercase tracking-wide bg-white/10 backdrop-blur-md border border-white/20 rounded-l-full rounded-r-none transition-transform duration-200 ease-out hover:scale-105 active:scale-95"
           >
             Visit
           </a>
@@ -44,9 +44,9 @@ function ProjectCard({ project }) {
             href={code || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 px-3 py-1 text-[0.60rem] sm:text-[0.60rem] md:text-[0.70rem] font-medium uppercase tracking-wide bg-white/10 backdrop-blur-md border border-white/20 rounded-r-full rounded-l-none transition-transform duration-200 ease-out hover:scale-105 active:scale-95"
+            className="flex items-center gap-1 px-3 py-1 text-[0.50rem] sm:text-[0.60rem] md:text-[0.70rem] font-medium uppercase tracking-wide bg-white/10 backdrop-blur-md border border-white/20 rounded-r-full rounded-l-none transition-transform duration-200 ease-out hover:scale-105 active:scale-95"
           >
-            <FaGithub size={12} />
+            <FaGithub size={10} />
             <span>GitHub</span>
           </a>
         </div>
