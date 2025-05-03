@@ -1,11 +1,9 @@
+// src/components/AboutSection.jsx
 import { motion } from "framer-motion";
 import { slideUp, slideLeft } from "../utils/animations";
 import { personalData } from "../utils/data/personal-data";
-import { usePointerHover } from "../hooks/usePointerHover";
 
 function AboutSection() {
-  const imgRef = usePointerHover("pointer-hover-active", 300);
-
   return (
     <div id="about" className="my-12 lg:my-16 relative px-1 sm:px-4 md:px-8">
       {/* “ABOUT ME” label for large screens */}
@@ -55,7 +53,6 @@ function AboutSection() {
           viewport={{ once: true, amount: 1 }}
         >
           <img
-            ref={imgRef}
             src={personalData.profile}
             alt={personalData.name}
             width={280}

@@ -16,12 +16,7 @@ html {
     --foreground-rgb: 255, 255, 255;
   }
 }
-@layer utilities {
-  /* mimics a hover:scale-110 + transition */
-  .pointer-hover-active {
-    transform: scale(1.10);
-  }
-}
+
 
 body {
   margin: 0;
