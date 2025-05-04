@@ -1,8 +1,10 @@
+// src/App.jsx
 import React, { useEffect } from "react";
 import TagManager from "react-gtm-module";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import CursorCircle from "./components/CursorCircle";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./helper/scroll-to-top";
 import Footer from "./components/Footer";
@@ -26,14 +28,17 @@ function App() {
 
   return (
     <>
-      {/* ToastContainer must be at root once */}
+      {/* Circle that follows the cursor */}
+      <CursorCircle />
+
+      {/* Toast notifications */}
       <ToastContainer />
 
-      {/* Navbar */}
+      {/* Navbar with scroll progress */}
       <ScrollProgress />
       <Navbar />
 
-      {/* Main content wrapper */}
+      {/* Main content */}
       <main className="min-h-screen container mx-auto px-6 sm:px-6 md:px-10 lg:px-16 xl:px-20 text-white">
         <HeroSection />
         <AboutSection />
