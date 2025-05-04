@@ -7,7 +7,7 @@ import ProjectCard from "./ProjectCard";
 
 function Projects() {
   return (
-    <div id="projects" className="relative z-50 my-12 lg:my-24 px-1 sm:px-4 md:px-8">
+    <div id="projects" className="relative z-50 my-12 lg:my-24 ">
       {/* Sticky header */}
       <div className="pt-1 md:pt-5 sticky top-1">
         <div className="w-[80px] h-[80px] bg-violet-100 rounded-full absolute -top-3 left-1/2 transform -translate-x-1/2 filter blur-3xl opacity-30" />

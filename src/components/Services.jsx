@@ -12,7 +12,7 @@ function Services() {
   return (
     <div
       id="services"
-      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b] px-1 sm:px-4 md:px-8"
+      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b] "
     >
       {/* Section background */}
       <img

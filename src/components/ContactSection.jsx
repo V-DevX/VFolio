@@ -36,32 +36,26 @@ function ContactSection() {
   const socials = [
     {
       name: "GitHub",
-      icon: <BsGithub size={30} />,
+      icon:  <BsGithub size={30}/>,
       url: personalData.github,
       bg: "bg-gray-800/40 backdrop-blur-md border border-gray-500/30",
     },
     {
       name: "LinkedIn",
-      icon: <BsLinkedin size={30} />,
+      icon: <BsLinkedin size={30}/>,
       url: personalData.linkedIn,
       bg: "bg-blue-600/40 backdrop-blur-md border border-blue-300/30",
     },
     {
       name: "LeetCode",
-      icon: <SiLeetcode size={30} />,
+      icon: <SiLeetcode size={30}/>,
       url: personalData.leetcode,
       bg: "bg-gradient-to-br from-yellow-500/40 to-black/40 backdrop-blur-md border border-yellow-400/30",
-    },
-    {
-      name: "Twitter",
-      icon: <FaTwitterSquare size={30} />,
-      url: personalData.twitter,
-      bg: "bg-sky-500/40 backdrop-blur-md border border-sky-400/30",
     },
   ];
 
   return (
-    <div id="contact" className="my-12 lg:my-16 relative mt-24 text-white px-1 sm:px-4">
+    <div id="contact" className="my-12 lg:my-16 relative mt-24 text-white ">
       {/* Vertical label on large screens */}
       <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8">
         <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md font-semibold">
@@ -110,7 +104,7 @@ function ContactSection() {
 
           {/* Social Icons */}
           <motion.div
-            className="my-2 flex flex-wrap items-center gap-[0.01rem]"
+            className="my-2 flex flex-wrap items-center gap-0"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -122,7 +116,7 @@ function ContactSection() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full h-full flex items-center justify-center group relative"
+                  className="w-17 h-full flex items-center justify-center group relative"
                   onTouchStart={(e) => {
                     const bgEl = e.currentTarget.querySelector(".hover-bg");
                     if (bgEl) bgEl.classList.add("scale-100");
