@@ -1,4 +1,3 @@
-// src/components/Services.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { slideLeft, staggerContainer } from "../utils/animations";
@@ -32,7 +31,7 @@ function Services() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.6 }}
           >
-            SERVICES
+            WHAT I DO?
           </motion.span>
           <span className="w-24 h-[2px] bg-[#1a1443]" />
         </div>

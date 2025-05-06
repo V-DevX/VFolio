@@ -1,4 +1,3 @@
-// src/components/ContactSection.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { slideUp, staggerContainer } from "../utils/animations";
@@ -8,7 +7,6 @@ import { IoMdCall } from "react-icons/io";
 import { CiLocationOn } from "react-icons/ci";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { SiLeetcode } from "react-icons/si";
-import { FaTwitterSquare } from "react-icons/fa";
 import ContactForm from "./ContactForm";
 
 function ContactSection() {

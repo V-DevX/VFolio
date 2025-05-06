@@ -1,4 +1,3 @@
-// src/components/Experience.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { slideUp, slideRight, staggerContainer } from "../utils/animations";

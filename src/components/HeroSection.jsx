@@ -1,4 +1,3 @@
-// src/components/HeroSection.jsx
 import { motion } from "framer-motion";
 import { slideUp, staggerContainer, slideLeft } from "../utils/animations";
 import { personalData } from "../utils/data/personal-data";

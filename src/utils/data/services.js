@@ -3,7 +3,7 @@ export const services = [
     {
       id: 1,
       title: "Web Development",
-      description: "Building responsive and dynamic\nweb applications suited to your needs.",
+      description: "High-quality development of sites at the professional level.",
     },
     {
       id: 2,
@@ -12,8 +12,8 @@ export const services = [
     },
     {
       id: 3,
-      title: "API Integration",
-      description: "Connecting your app with external\nservices and APIs securely.",
+      title: "Mobile Apps",
+      description: "Professional development of applications for iOS and Android.",
     },
   ];
   

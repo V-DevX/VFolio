@@ -1,4 +1,3 @@
-// src/components/ProjectCard.jsx
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 

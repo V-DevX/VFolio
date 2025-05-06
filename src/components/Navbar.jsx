@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInStagger, navItemFade, wipeDown } from "../utils/animations";

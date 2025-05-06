@@ -1,4 +1,3 @@
-// src/components/AboutSection.jsx
 import { motion } from "framer-motion";
 import { slideUp, slideLeft } from "../utils/animations";
 import { personalData } from "../utils/data/personal-data";

@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useEffect } from "react";
 import TagManager from "react-gtm-module";
 import { ToastContainer } from "react-toastify";

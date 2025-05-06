@@ -1,4 +1,3 @@
-// src/components/Skills.jsx
 import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";
 import { fadeInStagger } from "../utils/animations";
