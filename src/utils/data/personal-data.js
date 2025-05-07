@@ -9,7 +9,7 @@ export const personalData = {
   address: 'Chennai, TamilNadu, India',
   github: 'https://github.com/V-DevX',
   facebook: '#',
-  linkedIn: 'https://www.linkedin.com/in/vasanth-anto/',
+  linkedIn: 'https://www.linkedin.com/in/vasanth-devx/',
   twitter: '',
   stackOverflow: '#',
   leetcode: "https://leetcode.com/u/Vasanth-Dev/",

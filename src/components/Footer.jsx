@@ -11,9 +11,9 @@ function Footer() {
 
         {/* Centered credit text */}
         <p className="text-center text-sm mt-4">
-          © Developer Portfolio by{" "}
+          © Developed With ❤️ by{" "}
           <a
-            href="https://www.linkedin.com/in/vasanth-anto/"
+            href="https://www.linkedin.com/in/vasanth-devx/"
             target="_blank"
             rel="noopener noreferrer"
             className="

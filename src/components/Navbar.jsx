@@ -152,7 +152,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-4 right-4 z-[9999] flex flex-col items-end"
+            className="fixed top-4 right-4 z-[9998] flex flex-col items-end"
           >
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
