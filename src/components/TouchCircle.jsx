@@ -3,34 +3,31 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function TouchCircle() {
   const circleRef = useRef(null);
-  const [active, setActive] = useState(false);
+  // null until first touchstart, {x,y} while touching
+  const [touchPos, setTouchPos] = useState(null);
 
   useEffect(() => {
-    // Position helper
-    const moveCircle = (x, y) => {
-      const el = circleRef.current;
-      if (!el) return;
-      const { offsetWidth: w, offsetHeight: h } = el;
-      el.style.transform = `translate3d(${x - w / 2}px, ${y - h / 2}px, 0)`;
-    };
-
-    // Handlers
     const onTouchStart = (e) => {
-      const touch = e.touches[0];
-      if (!touch) return;
-      moveCircle(touch.clientX, touch.clientY);
-      setActive(true);
-    };
-    const onTouchMove = (e) => {
-      const touch = e.touches[0];
-      if (!touch) return;
-      moveCircle(touch.clientX, touch.clientY);
-    };
-    const onTouchEnd = () => {
-      setActive(false);
+      const t = e.touches[0];
+      if (!t) return;
+      // record position → triggers mount
+      setTouchPos({ x: t.clientX, y: t.clientY });
     };
 
-    // Listen globally
+    const onTouchMove = (e) => {
+      const t = e.touches[0];
+      if (!t || !circleRef.current) return;
+      // move circle under finger
+      const { offsetWidth: w, offsetHeight: h } = circleRef.current;
+      circleRef.current.style.transform = 
+        `translate3d(${t.clientX - w/2}px, ${t.clientY - h/2}px, 0)`;
+    };
+
+    const onTouchEnd = () => {
+      // hide/unmount
+      setTouchPos(null);
+    };
+
     document.addEventListener("touchstart", onTouchStart, { passive: true });
     document.addEventListener("touchmove", onTouchMove, { passive: true });
     document.addEventListener("touchend", onTouchEnd);
@@ -44,12 +41,17 @@ export default function TouchCircle() {
     };
   }, []);
 
-  // Only render the circle while active
-  if (!active) return null;
+  // not mounted until touchPos !== null
+  if (!touchPos) return null;
+
+  // initial position under finger (32px = w-8 h-8)
+  const initX = touchPos.x - 16;
+  const initY = touchPos.y - 16;
 
   return (
     <div
       ref={circleRef}
+      style={{ transform: `translate3d(${initX}px, ${initY}px, 0)` }}
       className="
         pointer-events-none
         fixed top-0 left-0
