@@ -3,28 +3,33 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function TouchCircle() {
   const circleRef = useRef(null);
-  // null until first touchstart, {x,y} while touching
+  // null until first touchstart; then {x,y} while finger down
   const [touchPos, setTouchPos] = useState(null);
 
+  // refs to drive smoothing without re-renders
+  const target = useRef({ x: 0, y: 0 });
+  const current = useRef({ x: 0, y: 0 });
+  const raf = useRef(null);
+
   useEffect(() => {
+    // Touch handlers
     const onTouchStart = (e) => {
       const t = e.touches[0];
       if (!t) return;
-      // record position → triggers mount
-      setTouchPos({ x: t.clientX, y: t.clientY });
+      const { clientX: x, clientY: y } = t;
+      // show & initialize positions
+      setTouchPos({ x, y });
+      target.current = { x, y };
+      current.current = { x, y };
     };
 
     const onTouchMove = (e) => {
       const t = e.touches[0];
-      if (!t || !circleRef.current) return;
-      // move circle under finger
-      const { offsetWidth: w, offsetHeight: h } = circleRef.current;
-      circleRef.current.style.transform = 
-        `translate3d(${t.clientX - w/2}px, ${t.clientY - h/2}px, 0)`;
+      if (!t) return;
+      target.current = { x: t.clientX, y: t.clientY };
     };
 
     const onTouchEnd = () => {
-      // hide/unmount
       setTouchPos(null);
     };
 
@@ -41,25 +46,50 @@ export default function TouchCircle() {
     };
   }, []);
 
-  // not mounted until touchPos !== null
-  if (!touchPos) return null;
+  useEffect(() => {
+    if (!touchPos) return;
 
-  // initial position under finger (32px = w-8 h-8)
-  const initX = touchPos.x - 16;
-  const initY = touchPos.y - 16;
+    const speed = 0.99; // higher → faster follow
+    const step = () => {
+      if (circleRef.current) {
+        // lerp current → target
+        current.current.x += (target.current.x - current.current.x) * speed;
+        current.current.y += (target.current.y - current.current.y) * speed;
+        const el = circleRef.current;
+        const w = el.offsetWidth;
+        const h = el.offsetHeight;
+        el.style.transform = `translate3d(${
+          current.current.x - w / 2
+        }px, ${current.current.y - h / 2}px, 0)`;
+      }
+      raf.current = requestAnimationFrame(step);
+    };
+
+    // immediate first frame
+    step();
+
+    return () => {
+      cancelAnimationFrame(raf.current);
+    };
+  }, [touchPos]);
+
+  // only render when finger is down
+  if (!touchPos) return null;
 
   return (
     <div
       ref={circleRef}
-      style={{ transform: `translate3d(${initX}px, ${initY}px, 0)` }}
       className="
-        pointer-events-none
-        fixed top-0 left-0
-        w-8 h-8 rounded-full
-        border border-pink-500 bg-transparent
+        pointer-events-none fixed top-0 left-0
+        w-8 h-8 rounded-full border border-pink-500 bg-transparent
         z-[9999]
-        transition-transform duration-200 ease-out
       "
+      style={{
+        // initial position under finger
+        transform: `translate3d(${touchPos.x - 16}px, ${
+          touchPos.y - 16
+        }px, 0)`,
+      }}
     />
   );
 }
