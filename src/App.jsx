@@ -4,7 +4,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import CursorCircle from "./components/CursorCircle";
-import TouchCircle from "./components/TouchCircle";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./helper/scroll-to-top";
 import Footer from "./components/Footer";
@@ -30,7 +29,6 @@ function App() {
     <>
       {/* Circle that follows the cursor */}
       <CursorCircle />
-      <TouchCircle />
 
       {/* Toast notifications */}
       <ToastContainer />

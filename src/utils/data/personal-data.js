@@ -10,7 +10,7 @@ export const personalData = {
   github: 'https://github.com/V-DevX',
   facebook: '#',
   linkedIn: 'https://www.linkedin.com/in/vasanth-devx/',
-  twitter: '',
+  twitter: 'https://',
   stackOverflow: '#',
   leetcode: "https://leetcode.com/u/Vasanth-Dev/",
   devUsername: "#",

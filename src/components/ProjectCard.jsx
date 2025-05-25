@@ -1,8 +1,16 @@
+// src/components/ProjectCard.jsx
 import React from "react";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 function ProjectCard({ project }) {
   const { name, tools, role, description, code, demo } = project;
+
+  // Shared button/base classes
+  const baseBtnClasses =
+    "flex items-center justify-center px-3 py-1 text-[0.50rem] sm:text-[0.60rem] md:text-[0.70rem] font-medium uppercase tracking-wide bg-white/10 backdrop-blur-md border border-white/20 transition-transform duration-200 ease-out";
+  const visitClasses = "rounded-l-full rounded-r-none hover:scale-105 active:scale-95";
+  const codeClasses = "rounded-r-full rounded-l-none hover:scale-105 active:scale-95";
+  const disabledClasses = "opacity-50 cursor-not-allowed";
 
   return (
     <div className="from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full group overflow-hidden">
@@ -22,38 +30,53 @@ function ProjectCard({ project }) {
         </div>
 
         {/* Project Name */}
-        <h3 className="text-[#16f2b3] text-[0.60rem] sm:text-[0.60rem] md:text-base lg:text-xl font-bold uppercase sm:text-center mx-auto">
+        <h3 className="text-[#16f2b3] text-[0.70rem] sm:text-[0.70rem] md:text-base lg:text-base font-bold uppercase text-center mx-auto">
           {name}
         </h3>
 
         {/* Visit & GitHub Buttons */}
         <div className="flex items-center space-x-1">
           {/* Visit */}
-          <a
-            href={demo || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-3 py-1 text-[0.50rem] sm:text-[0.60rem] md:text-[0.70rem] font-medium uppercase tracking-wide bg-white/10 backdrop-blur-md border border-white/20 rounded-l-full rounded-r-none transition-transform duration-200 ease-out hover:scale-105 active:scale-95"
-          >
-            Visit
-          </a>
+          {demo ? (
+            <a
+              href={demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${baseBtnClasses} ${visitClasses}`}
+            >
+              <FaExternalLinkAlt size={12} />
+              <span className="ml-1 hidden md:inline">Visit</span>
+            </a>
+          ) : (
+            <span className={`${baseBtnClasses} ${visitClasses} ${disabledClasses}`}>
+              <FaExternalLinkAlt size={12} />
+              <span className="ml-1 hidden md:inline">Visit</span>
+            </span>
+          )}
 
           {/* GitHub */}
-          <a
-            href={code || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 px-3 py-1 text-[0.50rem] sm:text-[0.60rem] md:text-[0.70rem] font-medium uppercase tracking-wide bg-white/10 backdrop-blur-md border border-white/20 rounded-r-full rounded-l-none transition-transform duration-200 ease-out hover:scale-105 active:scale-95"
-          >
-            <FaGithub size={10} />
-            <span>GitHub</span>
-          </a>
+          {code ? (
+            <a
+              href={code}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${baseBtnClasses} ${codeClasses}`}
+            >
+              <FaGithub size={12} />
+              <span className="ml-1 hidden md:inline">GitHub</span>
+            </a>
+          ) : (
+            <span className={`${baseBtnClasses} ${codeClasses} ${disabledClasses}`}>
+              <FaGithub size={12} />
+              <span className="ml-1 hidden md:inline">GitHub</span>
+            </span>
+          )}
         </div>
       </div>
 
       {/* Code-like details */}
       <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
-        <code className="font-mono text-xs md:text-sm lg:text-base text-gray-200 block whitespace-pre-wrap">
+        <code className="font-mono text-xs md:text-[0.9rem] text-gray-200 block whitespace-pre-wrap">
           <div className="blink">
             <span className="mr-2 text-pink-500">const</span>
             <span className="mr-2 text-white">project</span>
@@ -70,10 +93,10 @@ function ProjectCard({ project }) {
             <span className="text-white">tools:</span>
             <span className="text-gray-400"> ['</span>
             {tools.map((tag, i) => (
-              <React.Fragment key={i}>
+              <span key={i}>
                 <span className="text-amber-300">{tag}</span>
                 {i < tools.length - 1 && <span className="text-gray-400">', '</span>}
-              </React.Fragment>
+              </span>
             ))}
             <span className="text-gray-400">],</span>
           </div>
